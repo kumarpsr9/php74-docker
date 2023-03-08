@@ -1,0 +1,18 @@
+version: '3'
+services:
+  php7.4:
+    build:
+      context: ./
+      dockerfile: ./php/Dockerfile_php
+    image: php7.4
+    ports:
+      - 80:80
+    volumes:
+      - ./php/apache-conf.conf:/etc/apache2/sites-available/site.conf
+      - ./php/logs:/var/log/apache2
+      - ./php/config/php.ini:/etc/php/7.4/apache2/conf.d/30-custom.ini
+      - ./php/config/fqdn:/etc/apache2/conf.d/fqdn
+      - ./php/sites:/etc/apache2/sites-enabled/
+      - ./www:/var/www/html
+
+ 
